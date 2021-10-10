@@ -2,23 +2,27 @@
 
 # should be run by the wm on login to set basic variables
 
-# add local binaries to PATH
-PATH="$PATH:$HOME/.local/bin"
-# add custom scripts to PATH
-export PATH="$PATH:$HOME/.local/scripts"
-
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
 # export important system variables
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
 export BROWSER="librewolf"
 
+################
+
+# add user executables to PATH
+## add user binaries to PATH
+PATH="$PATH:$HOME/.local/bin"
+## add user scripts to PATH
+export PATH="$PATH:$HOME/.local/scripts"
+
+################
+
 # start services
-##start dbus
+## start dbus
 export $(dbus-launch)
 
 ## start ssh-agent and add keys
@@ -26,9 +30,19 @@ eval "$(ssh-agent -s)" > /dev/null
 #ssh-add "$HOME/.ssh/id_ed25519" > /dev/null
 ssh-add
 
-# select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
+## start ssh-agent and add keys
+eval "$(ssh-agent -s)" > /dev/null
+#ssh-add "$HOME/.ssh/id_ed25519" > /dev/null
+ssh-add
+
+################
+
+# gui settings
+## select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
 #export BACKGROUND_IMAGE=ign_waifu.png
 export BACKGROUND_IMAGE=astolfo_pink_bg.jpg
+
+################
 
 # ~/ cleanup
 ## 'less' cleanup
@@ -54,11 +68,4 @@ export CHROME_EXECUTABLE="/usr/bin/chromium"    # for flutter
 
 # 'surf' alias (no-js, no-pic)
 #alias surf='surf -si'
-
-
-
-# start ssh-agent and add keys
-eval "$(ssh-agent -s)" > /dev/null
-#ssh-add "$HOME/.ssh/id_ed25519" > /dev/null
-ssh-add
 
