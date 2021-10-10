@@ -9,38 +9,53 @@ export PATH="$PATH:$HOME/.local/scripts"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+# export important system variables
+export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
 export BROWSER="librewolf"
-export CHROME_EXECUTABLE="/usr/bin/chromium"	# for flutter
 
-#start dbus
+# start services
+##start dbus
 export $(dbus-launch)
 
-# background image selection (from $HOME/.local/share/backgrounds)
+## start ssh-agent and add keys
+eval "$(ssh-agent -s)" > /dev/null
+#ssh-add "$HOME/.ssh/id_ed25519" > /dev/null
+ssh-add
+
+# select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
 #export BACKGROUND_IMAGE=ign_waifu.png
 export BACKGROUND_IMAGE=astolfo_pink_bg.jpg
 
 # ~/ cleanup
-# 'less' settings
+## 'less' cleanup
 export LESSHISTFILE=-
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 
-# 'zsh' cleanup
+## 'zsh' cleanup
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 #export HISTFILE="$XDG_DATA_HOME/zsh/history"
 
+################
+
+# export other global variables
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"	# comment out if it breaks your dm
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+export CHROME_EXECUTABLE="/usr/bin/chromium"    # for flutter
+
+################
 
 # 'surf' alias (no-js, no-pic)
 #alias surf='surf -si'
+
+
 
 # start ssh-agent and add keys
 eval "$(ssh-agent -s)" > /dev/null
