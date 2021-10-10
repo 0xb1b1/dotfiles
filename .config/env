@@ -15,7 +15,7 @@ export BROWSER="librewolf"
 
 # add user executables to PATH
 ## add user binaries to PATH
-PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 ## add user scripts to PATH
 export PATH="$PATH:$HOME/.local/scripts"
 
