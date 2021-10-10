@@ -21,17 +21,6 @@ export PATH="$PATH:$HOME/.local/scripts"
 
 ################
 
-# start services
-## start dbus
-export $(dbus-launch)
-
-## start ssh-agent and add keys
-eval "$(ssh-agent -s)" > /dev/null
-#ssh-add "$HOME/.ssh/id_ed25519" > /dev/null
-ssh-add
-
-################
-
 # gui settings
 ## select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
 #export BACKGROUND_IMAGE=ign_waifu.png
