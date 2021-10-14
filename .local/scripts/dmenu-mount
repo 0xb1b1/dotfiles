@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# dmenu prompt for mounting unmounted drives
+# mounts automatically if a given drive is found in /etc/fstab
+# otherwise, asks for a mountpoint and lists existing dirs
+# prompts to approva creation of a new dir
+
+pgrep -x dmenu && exit
+
+mountable=$(lsblk -lp | grep "part $" | awk '{print $1, "(" $4 ")"}')
+[ "$mountable" = "" ] && exit 1
+chosen=$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')
+[ "$chosen" = "" ] && exit 1
+sudo mount "$chosen" && exit 0
+
