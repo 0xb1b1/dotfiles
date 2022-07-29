@@ -1,8 +1,8 @@
 #!/bin/zsh
 
-# should be run by the wm on login to set basic variables
+# Should be run by the wm on login to set basic variables
 
-# export important system variables
+# Export important system variables
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -13,43 +13,67 @@ export BROWSER="librewolf"
 
 ################
 
-# add user executables to PATH
-## add user binaries to PATH
+# Add user executables to PATH
+## Add user binaries to PATH
 export PATH="$PATH:$HOME/.local/bin"
-## add user scripts to PATH
+## Add user scripts to PATH
 export PATH="$PATH:$HOME/.local/scripts"
+## Add user AppImages to PATH
+export PATH="$PATH:$HOME/.local/appimages"
 
 ################
 
-# gui settings
+# GnuPG variables
+export GPG_TTY=$TTY
+
+################
+
+# GUI settings
 ## select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
+#export BACKGROUND_IMAGE=nezuko_dark_neon_city.jpg
+#export BACKGROUND_IMAGE=nezuko_retrowave.jpg
+#export BACKGROUND_IMAGE=nezuko_sakura_purple.jpg
 #export BACKGROUND_IMAGE=ign_waifu.png
-export BACKGROUND_IMAGE=astolfo_pink_bg.jpg
+#export BACKGROUND_IMAGE=astolfo_pink_bg.jpg
+#export BACKGROUND_IMAGE=simple_dark_grey-sun.png
+#export BACKGROUND_IMAGE=doge_moon.jpg
+#export BACKGROUND_IMAGE=doge_minimalism.jpg
+#export BACKGROUND_IMAGE=arch_linux-gray_bg.jpg
+export BACKGROUND_IMAGE=nixos-pantsu.png
 
 ################
 
 # ~/ cleanup
-## 'less' cleanup
+## `less` cleanup
 export LESSHISTFILE=-
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
 
-## 'zsh' cleanup
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+## `zsh` cleanup
+#export ZDOTDIR="$XDG_CONFIG_HOME/zsh"  # disable in NixOS
 #export HISTFILE="$XDG_DATA_HOME/zsh/history"
 
 ################
 
-# export other global variables
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"	# comment out if it breaks your dm
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
-export CHROME_EXECUTABLE="/usr/bin/chromium"    # for flutter
+# Export other global variables
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"            # comment out if it breaks your dm
+#export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"  # this line and lines below should be commented out on nixos
+#export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+#export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
+#export CARGO_HOME="$XDG_DATA_HOME/cargo"
+#export ELINKS_CONFDIR="$XDG_CONFIG_HOME/elinks"
+#export CHROME_EXECUTABLE="/usr/bin/chromium"    # for flutter
+
+# (Language) Character input
+#export GTK_IM_MODULE='ibus'
+#export QT_IM_MODULE='ibus'
+#export XMODIFIERS='@im=ibus'
 
 ################
 
 # 'surf' alias (no-js, no-pic)
 #alias surf='surf -si'
 
+################
+
+# Docker settings
+export DOCKER_BUILDKIT=1
