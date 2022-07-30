@@ -2,31 +2,38 @@
 -- Default awesome theme --
 ---------------------------
 
-local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
-local dpi = xresources.apply_dpi
+local theme_assets  = require("beautiful.theme_assets")
+local xresources    = require("beautiful.xresources")
+local dpi           = xresources.apply_dpi
 
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
+local gfs           = require("gears.filesystem")
+local themes_path   = gfs.get_themes_dir()
 
-local theme = {}
+local theme         = {}
 
 --theme.font          = "sans 8"
-theme.font          = "inconsolata 9"
 --theme.font          = "monospace 9"
+--theme.font          = "inconsolata 9"
+theme.font          = "Cascadia Code 10"
 
-theme.bg_normal     = "#2e3440"
-theme.bg_focus      = "#434c5e"
+
+--theme.wallpaper = themes_path.."default/background.png"
+--theme.wallpaper = gears.filesystem.get_configuration_dir() .. "backgrounds/background.png"
+--theme.wallpaper = gfs.get_xdg_data_home() .. "backgrounds/anarchy1.jpg"
+theme.wallpaper     = gfs.get_xdg_data_home() .. "vertical_neon_lights-dark.jpg"
+
+theme.bg_normal     = "#2d2b55"  -- "#2e3440"
+theme.bg_focus      = "#a599e9"  --"#434c5e"
 theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#e5e9f0"
+theme.bg_minimize   = "#1e1e3f"  --"#e5e9f0"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#aaaaaa"  --"#aaaaaa"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(7)
+theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
 theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
@@ -99,10 +106,6 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
---theme.wallpaper = themes_path.."default/background.png"
---theme.wallpaper = gears.filesystem.get_configuration_dir() .. "backgrounds/background.png"
---theme.wallpaper = gfs.get_xdg_data_home() .. "backgrounds/anarchy1.jpg"
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
@@ -133,4 +136,3 @@ theme.icon_theme = nil
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
-

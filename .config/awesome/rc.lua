@@ -150,20 +150,24 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
+-- Temporarily resorting to setting wallpaper via `feh`
+-- local function set_wallpaper(s)
+--     -- Wallpaper
+--     if beautiful.wallpaper then
+--         local wallpaper = beautiful.wallpaper
+--         -- If wallpaper is a function, call it with the screen
+--         if type(wallpaper) == "function" then
+--             wallpaper = wallpaper(s)
+--         end
+--         gears.wallpaper.maximized(wallpaper, s, true)
+--     end
+-- end
 local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
+    awful.spawn.with_shell("~/.local/scripts/set-wallpaper_wm", false)
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+--screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -228,6 +232,11 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+
+-- {{{ Autostart at WM launch
+    --awful.spawn.with_shell("$HOME/.local/scripts/launch-ibus")  -- required for jp-romaji input
+-- }}}
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -286,11 +295,15 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "spawn a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "w", function () awful.spawn("librewolf") end,
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn("cool-retro-term") end,
+              {description = "spawn cool-retro-term", group = "launcher"}),
+    awful.key({ modkey,           }, "w", function () awful.spawn("librewolf") end,
               {description = "spawn librewolf browser", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "w", function () awful.spawn("firefox") end,
               {description = "spawn firefox browser", group = "launcher"}),
-    awful.key({ modkey,           }, "w", function () awful.spawn("chromium") end,
+    awful.key({ modkey,           }, "u", function () awful.spawn("ulauncher") end,
+              {description = "spawn ulauncher", group = "launcher"}),
+    awful.key({ modkey, "Control" }, "w", function () awful.spawn("chromium") end,
               {description = "spawn chromium browser", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -373,7 +386,7 @@ clientkeys = gears.table.join(
               --{description = "close", group = "client"}),
     awful.key({ modkey,           }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-	      awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+	     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
@@ -603,10 +616,12 @@ autorun = true
 autorunApps =
 {
    "set-wallpaper",
-   "set-transparency",
+   --"set-transparency",
+   --"pipewire-launch",
 }
 if autorun then
    for app = 1, #autorunApps do
        awful.util.spawn(autorunApps[app])
    end
 end
+
