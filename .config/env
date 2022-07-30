@@ -29,7 +29,7 @@ export GPG_TTY=$TTY
 ################
 
 # GUI settings
-## select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by ~/.config/awesome/rc.lua)
+## select a background image (from $HOME/.local/share/backgrounds; executed as set-wallpaper script by $HOME/.config/awesome/rc.lua)
 #export BACKGROUND_IMAGE=nezuko_dark_neon_city.jpg
 #export BACKGROUND_IMAGE=nezuko_retrowave.jpg
 #export BACKGROUND_IMAGE=nezuko_sakura_purple.jpg
@@ -39,7 +39,8 @@ export GPG_TTY=$TTY
 #export BACKGROUND_IMAGE=doge_moon.jpg
 #export BACKGROUND_IMAGE=doge_minimalism.jpg
 #export BACKGROUND_IMAGE=arch_linux-gray_bg.jpg
-export BACKGROUND_IMAGE=nixos-pantsu.png
+#export BACKGROUND_IMAGE=nixos-pantsu.png
+export BACKGROUND_IMAGE=neon_city-person_mask.jpg
 
 ################
 
